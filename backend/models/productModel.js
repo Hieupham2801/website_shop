@@ -3,7 +3,6 @@ const Review = require("./reviewModel")
 const imageSchema = mongoose.Schema({
     path: {type: String, required: true}
 })
-
 const productSchema = mongoose.Schema({
     name: {
         type: String,
@@ -50,7 +49,8 @@ const productSchema = mongoose.Schema({
 }, {
     timestamps: true,
 })
-const Product = mongoose.model("Product", productSchema)
+mongoose.models = {}
+const Product = mongoose.model('Product', productSchema);
 
 productSchema.index({name: "text", description: "text"}, {name: "TextIndex"})
 productSchema.index({"attrs.key":1, "attrs.value":1})

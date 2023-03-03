@@ -1,8 +1,12 @@
 const express = require("express");
+const fileUpload = require("express-fileupload")
+const cookieParser = require("cookie-parser")
 const app = express();
 const port = 3000;
 
 app.use(express.json())
+app.use(cookieParser())
+app.use(fileUpload())
 
 const apiRoutes = require("./routes/apiRoutes");
 
@@ -30,3 +34,4 @@ app.use((error, req, res, next) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
